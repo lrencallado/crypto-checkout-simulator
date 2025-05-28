@@ -26,6 +26,17 @@ abstract class BaseRepository
     }
 
     /**
+     * Create a new record in the database with the provided data.
+     *
+     * @param array $data The data to be used for creating the new record.
+     * @return \Illuminate\Database\Eloquent\Model The newly created model instance.
+     */
+    public function create(array $data)
+    {
+        return $this->model->create($data);
+    }
+
+    /**
      * Get all records from the model.
      *
      * @return \Illuminate\Database\Eloquent\Collection
