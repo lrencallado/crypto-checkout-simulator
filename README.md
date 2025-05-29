@@ -4,18 +4,6 @@ This project simulates a backend service for a crypto-based event ticket checkou
 
 ---
 
-## 📦 Features
-
-- `POST /api/v1/checkout` – Create a fake checkout session
-- `POST //webhook` – Handle simulated Coinbase webhook payloads
-- `/up` - Laravel includes a built-in health check route that can be used to monitor the status of your application
-- `/pulse` - Laravel built-in pulse delivers at-a-glance insights of application's performance and usage. Track down bottlenecks like slow jobs and endpoints, find your most active users, and more.
-- Input validation via Laravel FormRequest
-- Mocked Coinbase payment URL
-- Stores transactions in a MySQL database
-
----
-
 ## ▶️ How to Run
 
 1. Clone the repository
@@ -74,6 +62,9 @@ This project simulates a backend service for a crypto-based event ticket checkou
   - Flexible for feature expansion.
   - The Repository Pattern acts as a bridge between the business logic and the data layer (usually a database). It centralizes data access logic, making the application easier to test, maintain, and extend.
 
+### Assuming this is an API
+- Use Laravel default prefix for api routes to avoid naming conflicts with web routes `/api`.
+
 ### ✅ API Versioning (`Api\V1`)
 
 - Organizes controllers in a versioned folder structure (`Api/V1`) to prepare for future API iterations.
@@ -118,5 +109,16 @@ This project simulates a backend service for a crypto-based event ticket checkou
     - This will include Users and Roles management and login
 - Improve api routes versioning (if needed)
 - Full test case coverage
+
+---
+
+## 📦 Features
+
+- `POST /api/v1/checkout` – Create a fake checkout session
+- `POST /webhook` – Handle simulated Coinbase webhook payloads
+- `/up` - Laravel includes a built-in health check route that can be used to monitor the status of your application
+- `/pulse` - Laravel built-in pulse delivers at-a-glance insights of application's performance and usage. Track down bottlenecks like slow jobs and endpoints, find your most active users, and more.
+- Mocked Coinbase payment URL
+- Stores transactions in a MySQL database
 
 ---
