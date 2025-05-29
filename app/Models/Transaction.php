@@ -22,7 +22,6 @@ class Transaction extends Model
     protected function amount(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attributes) => $attributes['amount'] / 100,
             set: fn ($value) => (int) round($value * 100),
         );
     }
