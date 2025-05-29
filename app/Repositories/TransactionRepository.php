@@ -16,6 +16,13 @@ class TransactionRepository extends BaseRepository
         return Transaction::class;
     }
 
+    /**
+     * Checks if a transaction with the given reference ID and status already exists.
+     *
+     * @param string $referenceId
+     * @param string $status
+     * @return bool Returns true if a duplicate transaction exists, false otherwise.
+     */
     public function isDuplicate(string $referenceId, string $status): bool
     {
         return $this->model->where('reference_id', $referenceId)
