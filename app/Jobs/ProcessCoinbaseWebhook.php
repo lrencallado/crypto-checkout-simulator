@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Models\Transaction;
 use App\Repositories\TransactionRepository;
 use Illuminate\Support\Facades\Log;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob as SpatieProcessWebhookJob;
@@ -24,9 +23,7 @@ class ProcessCoinbaseWebhook extends SpatieProcessWebhookJob
             $transactionId = $payload['event']['data']['transaction_id'];
             $status = $payload['event']['data']['status'];
 
-            $isDuplicate = Transaction::where('reference_id', $transactionId)
-                ->where('status', $status)
-                ->exists();
+            $isDuplicate = $this->transactionRepository->isDuplicate($transactionId, $status);
 
             if ($isDuplicate) {
                 Log::info('Transaction already exists, skipping processing.', ['transaction_id' => $transactionId]);

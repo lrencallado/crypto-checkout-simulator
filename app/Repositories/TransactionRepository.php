@@ -15,4 +15,11 @@ class TransactionRepository extends BaseRepository
     {
         return Transaction::class;
     }
+
+    public function isDuplicate(string $referenceId, string $status): bool
+    {
+        return $this->model->where('reference_id', $referenceId)
+            ->where('status', $status)
+            ->exists();
+    }
 }
