@@ -1,6 +1,6 @@
 # 🚀 Crypto Checkout Simulator (PHP, Laravel)
 
-This project simulates a backend service for a crypto-based event ticket checkout using Laravel. It mocks the behavior of Coinbase Commerce and demonstrates basic webhook integration.
+This project simulates a backend service (API) for a crypto-based event ticket checkout using Laravel. It mocks the behavior of Coinbase Commerce and demonstrates basic webhook integration.
 
 ---
 
@@ -106,6 +106,7 @@ This project simulates a backend service for a crypto-based event ticket checkou
     - This will include Users and Roles management and login
 - Improve api routes versioning (if needed)
 - Full test case coverage
+- Add logs monitoring in Admin panel
 
 ---
 
