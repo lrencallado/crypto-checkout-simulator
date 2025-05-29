@@ -62,7 +62,7 @@ This project simulates a backend service for a crypto-based event ticket checkou
   - Flexible for feature expansion.
   - The Repository Pattern acts as a bridge between the business logic and the data layer (usually a database). It centralizes data access logic, making the application easier to test, maintain, and extend.
 
-### Assuming this is an API
+### ✅ Assuming this is an API
 - Use Laravel default prefix for api routes to avoid naming conflicts with web routes `/api`.
 
 ### ✅ API Versioning (`Api\V1`)
@@ -75,9 +75,6 @@ This project simulates a backend service for a crypto-based event ticket checkou
 - Laravel Sanctum to authenticate API requests via token-based auth.
 - Chosen for its simplicity and native Laravel integration
 - Protects routes like `/api/v1/checkout`
-
-- Organizes controllers in a versioned folder structure (`Api/V1`) to prepare for future API iterations.
-- Simplifies long-term maintenance and supports backward compatibility.
 
 ### ✅ Validated Requests
 
