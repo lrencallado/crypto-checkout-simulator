@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckoutRequest;
 use App\Services\Coinbase\Commerce\CheckoutService;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -29,6 +30,7 @@ class CheckoutController extends Controller
                 ],
             ], 201);
         } catch (\Exception $e) {
+            Log::error('Checkout failed', ['error' => $e->getMessage()]);
             return response()->json(['message' => 'Failed to create checkout: ' . $e->getMessage()], 500);
         }
     }

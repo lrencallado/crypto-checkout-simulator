@@ -2,21 +2,37 @@
 
 namespace App\Jobs;
 
+use App\Models\Transaction;
 use App\Repositories\TransactionRepository;
 use Illuminate\Support\Facades\Log;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob as SpatieProcessWebhookJob;
 
 class ProcessCoinbaseWebhook extends SpatieProcessWebhookJob
 {
+    protected $transactionRepository;
+
     /**
      * Execute the job.
      */
     public function handle(): void
     {
         $payload = $this->webhookCall->payload;
+        $this->transactionRepository = new TransactionRepository();
 
         // Check if event type is 'charge:confirmed'
         if ($payload['event']['type'] === 'charge:confirmed') {
+            $transactionId = $payload['event']['data']['transaction_id'];
+            $status = $payload['event']['data']['status'];
+
+            $isDuplicate = Transaction::where('reference_id', $transactionId)
+                ->where('status', $status)
+                ->exists();
+
+            if ($isDuplicate) {
+                Log::info('Transaction already exists, skipping processing.', ['transaction_id' => $transactionId]);
+                return;
+            }
+
             // Process the confirmed charge
             Log::info('Processing event charge:confirmed.', ['payload' => $payload]);
             $this->processConfirmedCharge($payload['event']['data']);
@@ -30,8 +46,7 @@ class ProcessCoinbaseWebhook extends SpatieProcessWebhookJob
      */
     private function processConfirmedCharge(array $data): void
     {
-        $transactionRepository = new TransactionRepository();
-        $transaction = $transactionRepository->create([
+        $transaction = $this->transactionRepository->create([
             'reference_id' => $data['transaction_id'],
             'email' => $data['email'],
             'amount' => $data['amount'],
