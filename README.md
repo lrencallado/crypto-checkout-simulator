@@ -79,15 +79,30 @@ This project simulates a backend service for a crypto-based event ticket checkou
 - Organizes controllers in a versioned folder structure (`Api/V1`) to prepare for future API iterations.
 - Simplifies long-term maintenance and supports backward compatibility.
 
+### ✅ Laravel Sanctum for API Authentication
+
+- Laravel Sanctum to authenticate API requests via token-based auth.
+- Chosen for its simplicity and native Laravel integration
+- Protects routes like `/api/v1/checkout`
+
+- Organizes controllers in a versioned folder structure (`Api/V1`) to prepare for future API iterations.
+- Simplifies long-term maintenance and supports backward compatibility.
+
 ### ✅ Validated Requests
 
 - Form Requests (`CheckoutRequest`) ensure clean, centralized input validation.
 - Keeps controllers slim and focused.
 
+### ✅ Spatie Webhook-Client Package
+
+- Uses the Spatie Webhook Client package to handle incoming webhook requests securely.
+- Verifies signatures against a shared secret to ensure webhook authenticity.
+- Offers a clean, extendable structure for processing different types of webhook payloads.
+
 ### ✅ Simulated Coinbase API Integration
 
 - Coinbase interactions are mocked, returning fake URLs and responses.
-- Webhooks simulate a real payment status change from Coinbase.
+- Webhooks simulate a payment status change from Coinbase payload.
 
 ### ✅ amount column uses BIGINT
 
@@ -102,5 +117,6 @@ This project simulates a backend service for a crypto-based event ticket checkou
 - Admin panel for manually retrying failed jobs
     - This will include Users and Roles management and login
 - Improve api routes versioning (if needed)
+- Full test case coverage
 
 ---
