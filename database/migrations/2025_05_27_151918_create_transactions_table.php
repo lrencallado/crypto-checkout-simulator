@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('reference_id')->unique();
-            $table->string('email');
+            $table->string('email')->index();
             $table->bigInteger('amount')->default(0);
             $table->string('status');
             $table->timestamps();
