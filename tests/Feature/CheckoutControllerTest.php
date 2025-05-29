@@ -19,7 +19,7 @@ class CheckoutControllerTest extends TestCase
 
         Sanctum::actingAs($user);
 
-        $response = $this->postJson('/checkout', [
+        $response = $this->postJson('/api/v1/checkout', [
             'amount' => 10.02,
             'email' => $user->email,
         ]);
