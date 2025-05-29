@@ -43,7 +43,7 @@ This project simulates a backend service for a crypto-based event ticket checkou
     DB_USERNAME=your_database_user
     DB_PASSWORD=your_database_password
     ```
-6. Generate the application key:
+6. Generate the application key (if `APP_KEY` from `.env` is null):
     ```bash
     php artisan key:generate
     ```
