@@ -39,6 +39,16 @@ This project simulates a backend service (API) for a crypto-based event ticket c
     ```bash
     php artisan migrate
     ```
+8. Run on the dev environment
+   Using composer
+   ```bash
+   composer run dev
+   ```
+
+   Using Docker
+   ```
+   docker compose -f compose.dev.yaml up --build -d
+   ```
 
 ---
 
