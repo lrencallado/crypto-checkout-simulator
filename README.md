@@ -40,7 +40,7 @@ This project simulates a backend service (API) for a crypto-based event ticket c
     php artisan migrate
     ```
 8. Run on the dev environment
-9. 
+   
    Using composer
    ```bash
    composer run dev
