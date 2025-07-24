@@ -49,7 +49,7 @@ This project simulates a backend service (API) for a crypto-based event ticket c
 
 ### ▶️ Run in Development Environment with Docker
 
-1. Copy the `.env.example` file to `.env` (if not existing):
+1. Copy the `.env.example` file to `.env` (if not existing) and adjust any necessary environment variables:
     ```bash
     cp .env.example .env
     ```
