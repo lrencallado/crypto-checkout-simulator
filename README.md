@@ -4,7 +4,7 @@ This project simulates a backend service (API) for a crypto-based event ticket c
 
 ---
 
-## ▶️ How to Run
+## ▶️ Run on local environment
 
 1. Clone the repository
     ```bash
@@ -39,19 +39,36 @@ This project simulates a backend service (API) for a crypto-based event ticket c
     ```bash
     php artisan migrate
     ```
-8. Run on the dev environment
-   
-   Using composer
-   ```bash
-   composer run dev
-   ```
-
-   Using Docker
-   ```
-   docker compose -f compose.dev.yaml up --build -d
-   ```
+8. Run
+    ```bash
+    composer run dev
+    ```
 
 ---
+
+
+### ▶️ Run in Development Environment with Docker
+
+1. Copy the `.env.example` file to `.env` (if not existing):
+    ```bash
+    cp .env.example .env
+    ```
+2. Start the Docker Compose Services:
+    ```bash
+    docker compose -f compose.dev.yaml up --build -d
+    ```
+3. Install Laravel Dependencies:
+    ```bash
+    docker compose -f compose.dev.yaml exec workspace bash
+    composer install
+    npm install
+    npm run dev
+    ```
+---
+4. Run Migrations
+    ```bash
+    docker compose -f compose.dev.yaml exec workspace php artisan migrate
+    ```
 
 ## Testing
 
